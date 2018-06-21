@@ -31,7 +31,6 @@ public class PrestaShopNEGATIVE {
 		
 		String text = driver.findElement(By.xpath("//div[@class='alert alert-danger']/ol/li")).getText();
 		Assert.assertEquals(text,"Authentication failed.");
-		
 	}
 
 	@Test
