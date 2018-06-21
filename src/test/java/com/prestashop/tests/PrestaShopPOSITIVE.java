@@ -83,7 +83,6 @@ public class PrestaShopPOSITIVE {
 		String text = driver.findElement(By.xpath("//a[@class='account']/span")).getText();
 		Assert.assertEquals(text, name + " " + lastName);
 		
-
 	}
 
 	@AfterMethod
