@@ -28,7 +28,7 @@ public class PrestaShopNEGATIVE {
 		driver.findElement(By.id("email")).sendKeys("Ivanna@gmail.com");
 		driver.findElement(By.id("passwd")).sendKeys("cybertek");
 		driver.findElement(By.id("SubmitLogin")).click();
-		
+	
 		String text = driver.findElement(By.xpath("//div[@class='alert alert-danger']/ol/li")).getText();
 		Assert.assertEquals(text,"Authentication failed.");
 	}
