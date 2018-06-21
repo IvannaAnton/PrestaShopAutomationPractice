@@ -1,6 +1,7 @@
 package com.prestashop.tests;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -27,8 +28,10 @@ public class PrestaShopNEGATIVE {
 		driver.findElement(By.id("email")).sendKeys("Ivanna@gmail.com");
 		driver.findElement(By.id("passwd")).sendKeys("cybertek");
 		driver.findElement(By.id("SubmitLogin")).click();
-
-		Assert.assertTrue(true, "Authentication failed.");
+		
+		String text = driver.findElement(By.xpath("//div[@class='alert alert-danger']/ol/li")).getText();
+		Assert.assertEquals(text,"Authentication failed.");
+		
 
 	}
 
@@ -37,8 +40,10 @@ public class PrestaShopNEGATIVE {
 		driver.findElement(By.id("email")).sendKeys("Ivanna");
 		driver.findElement(By.id("passwd")).sendKeys("cybertek");
 		driver.findElement(By.id("SubmitLogin")).click();
-
-		Assert.assertTrue(true, "Invalid email address.");
+		
+		String text = driver.findElement(By.xpath("//div[@class='alert alert-danger']/ol/li")).getText();
+		Assert.assertEquals(text,"Invalid email address.");
+		
 
 	}
 
@@ -48,7 +53,9 @@ public class PrestaShopNEGATIVE {
 		driver.findElement(By.id("passwd")).sendKeys("cybertek");
 		driver.findElement(By.id("SubmitLogin")).click();
 
-		Assert.assertTrue(true, "An email address required.");
+		String text = driver.findElement(By.xpath("//div[@class='alert alert-danger']/ol/li")).getText();
+		Assert.assertEquals(text,"An email address required.");
+		
 	}
 
 	@Test
@@ -57,11 +64,13 @@ public class PrestaShopNEGATIVE {
 		driver.findElement(By.id("passwd")).sendKeys(" ");
 		driver.findElement(By.id("SubmitLogin")).click();
 
-		Assert.assertTrue(true, " Password is required. ");
+		String text = driver.findElement(By.xpath("//div[@class='alert alert-danger']/ol/li")).getText();
+		Assert.assertEquals(text,"Password is required.");
+		
 	}
 
 	@AfterMethod
 	public void tearDown() {
-		//driver.close();
+		driver.close();
 	}
 }

@@ -79,7 +79,10 @@ public class PrestaShopPOSITIVE {
 		driver.findElement(By.id("passwd")).sendKeys(passcode);
 		driver.findElement(By.id("SubmitLogin")).click();
 		
-		Assert.assertTrue(true, name + " " + lastName);
+		
+		String text = driver.findElement(By.xpath("//a[@class='account']/span")).getText();
+		Assert.assertEquals(text, name + " " + lastName);
+		
 
 	}
 
